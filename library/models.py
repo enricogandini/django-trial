@@ -22,6 +22,9 @@ class Publisher(models.Model):
         help_text="The main phone number of the publisher",
     )
 
+    def __str__(self):
+        return self.business_name
+
 
 class Author(models.Model):
     """
@@ -36,6 +39,9 @@ class Author(models.Model):
         max_length=100,
         help_text="The author's last name",
     )
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
 
 
 class Book(models.Model):
@@ -61,4 +67,12 @@ class Book(models.Model):
         ),
     )
 
-    
+    @property
+    def year_publication(self):
+        return getattr(self.date_publication, "year", None)
+
+    def __str__(self):
+        if self.date_publication is not None:
+            return f"{self.title} ({self.year_publication})"
+        else:
+            return self.title
