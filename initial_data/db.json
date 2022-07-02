@@ -1,0 +1,52 @@
+{
+   "libri":[
+      {
+         "titolo":"Le mille e 1 notte",
+         "autore":1,
+         "editore":2,
+         "anno edizione":"2000"
+      },
+      {
+         "titolo":"program in javascript",
+         "autore":3,
+         "editore":1,
+         "anno edizione":"1876"
+      },
+      {
+         "titolo":"MSDOS",
+         "autore":2,
+         "editore":2,
+         "anno edizione":"2022"
+      }
+   ],
+   "autori":[
+      {
+         "id":1,
+         "nome":"scierasad_1",
+         "cognome":"prova_1"
+      },
+      {
+         "id":2,
+         "nome":"mario_2",
+         "cognome":"rossi_2"
+      },
+      {
+         "id":3,
+         "nome":"giuseppe_3",
+         "cognome":"verdi_3"
+      }
+   ],
+   "editori":[
+      {
+         "id":1,
+         "ragione sociale":"edizioni fantasia_1",
+         "indirizzo":"via di qua"
+      },
+      {
+         "id":2,
+         "ragione sociale":"program edition_2",
+         "indirizzo":"streetlarg",
+         "telefono":"0213456789"
+      }
+   ]
+}
