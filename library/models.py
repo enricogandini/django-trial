@@ -52,3 +52,13 @@ class Book(models.Model):
     publisher = models.ForeignKey(
         Publisher, on_delete=models.CASCADE, help_text="The publisher of the book"
     )
+    date_publication = models.DateField(
+        null=True,
+        blank=True,
+        help_text=(
+            "The publication date of a book. "
+            "If only the year is available, by default use the 1st of January of that year."
+        ),
+    )
+
+    
