@@ -9,6 +9,7 @@ class BookViewSet(viewsets.ModelViewSet):
     """
     View the available Books
     """
+
     serializer_class = BookSerializer
 
     queryset = Book.objects.all()
