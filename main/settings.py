@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 from pathlib import Path
+import json
 
 from django.conf.locale.en import formats as en_formats
 
@@ -21,7 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-pw!qd7re(#xb)5+esdmn2ft)9q8v17wzktn9b=lyn0pn=^n@ph"
+file_secrets = Path("secrets.json")
+with open(file_secrets, "r") as f:
+    SECRET_KEY = json.load(f)["django"]["secret_key"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
