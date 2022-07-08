@@ -10,7 +10,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(model_name="book", name="author",),
+        migrations.RemoveField(
+            model_name="book",
+            name="author",
+        ),
         migrations.AddField(
             model_name="book",
             name="authors",
