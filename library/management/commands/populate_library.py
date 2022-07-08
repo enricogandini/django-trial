@@ -9,7 +9,7 @@ from library.models import Author, Book, Publisher
 
 class Command(BaseCommand):
     DIR_INITIAL_DATA = Path("initial_data")
-    FILE_INITIAL_LIBRARY = Path(DIR_INITIAL_DATA, "initial_library.json")
+    FILE_INITIAL_LIBRARY = Path(DIR_INITIAL_DATA, "db2.json")
 
     help = f"Populate the library tables with data from {FILE_INITIAL_LIBRARY}"
 
@@ -52,7 +52,7 @@ class Command(BaseCommand):
         books = [
             {
                 "title": book["titolo"],
-                "author_id": book["autore"],
+                "authors_ids": book["autore"],
                 "publisher_id": book["editore"],
                 "date_publication": self._get_date_from_book(book),
             }
@@ -79,15 +79,15 @@ class Command(BaseCommand):
     ) -> list[Book]:
         books_objs = []
         for book in books:
-            author = authors[book["author_id"]]
+            authors = [authors[author_id] for author_id in book["authors_ids"]]
             publisher = publishers[book["publisher_id"]]
             book_obj = Book.objects.create(
                 title=book["title"],
                 date_publication=book["date_publication"],
-                author=author,
                 publisher=publisher,
             )
-            self.stdout.write(f"Added {book_obj} by {author} published by {publisher}")
+            book_obj.authors.set(authors)
+            self.stdout.write(f"Added {book_obj} by {authors} published by {publisher}")
             books_objs.append(book_obj)
         return books_objs
 
