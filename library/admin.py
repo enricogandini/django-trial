@@ -7,11 +7,11 @@ from .models import Author, Book, Publisher
 class BookAdmin(admin.ModelAdmin):
     list_display = (
         "title",
-        "author",
         "date_publication",
         "publisher",
+        "price",
     )
-    sortable_by = ("title", "date_publication")
+    sortable_by = ("title", "date_publication", "price")
 
 
 admin.site.register(Author)
